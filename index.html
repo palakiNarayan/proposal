@@ -2,1014 +2,536 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Will You Marry Me, Shona? 💍</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palaki Narayan · full‑stack developer</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
         }
-        
-        html {
-            font-size: 16px;
-            height: 100%;
-        }
-        
+
         body {
-            background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 50%, #fce4ec 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 15px;
-            font-family: 'Poppins', sans-serif;
-            position: relative;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        
-        .bg-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .bg-heart {
-            position: absolute;
-            color: rgba(255, 182, 193, 0.1);
-            font-size: 4rem;
-            animation: gentleFloat 20s infinite linear;
-        }
-        
-        @keyframes gentleFloat {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0.1; }
-            50% { opacity: 0.15; }
-            100% { transform: translateY(-100px) rotate(180deg); opacity: 0.1; }
-        }
-        
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 
-                0 10px 30px rgba(255, 107, 139, 0.2),
-                0 0 0 1px rgba(255, 182, 193, 0.1);
-            width: 100%;
-            max-width: 500px;
-            padding: 25px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            backdrop-filter: blur(10px);
-            margin: 0 auto;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, 
-                #ff3366, 
-                #ff6699, 
-                #ff3366);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite linear;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        
-        .corner-decoration {
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            opacity: 0.7;
-        }
-        
-        .corner-top-left {
-            top: 10px;
-            left: 10px;
-            border-top: 2px solid #ff6b8b;
-            border-left: 2px solid #ff6b8b;
-            border-top-left-radius: 10px;
-        }
-        
-        .corner-top-right {
-            top: 10px;
-            right: 10px;
-            border-top: 2px solid #ff6b8b;
-            border-right: 2px solid #ff6b8b;
-            border-top-right-radius: 10px;
-        }
-        
-        .corner-bottom-left {
-            bottom: 10px;
-            left: 10px;
-            border-bottom: 2px solid #ff6b8b;
-            border-left: 2px solid #ff6b8b;
-            border-bottom-left-radius: 10px;
-        }
-        
-        .corner-bottom-right {
-            bottom: 10px;
-            right: 10px;
-            border-bottom: 2px solid #ff6b8b;
-            border-right: 2px solid #ff6b8b;
-            border-bottom-right-radius: 10px;
-        }
-        
-        .content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        h1 {
-            color: #ff3366;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            line-height: 1.2;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            position: relative;
-            display: inline-block;
-            padding: 0 10px;
-        }
-        
-        h1::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 15%;
-            width: 70%;
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, #ff3366, transparent);
-        }
-        
-        .subtitle {
-            color: #ff6699;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            font-family: 'Dancing Script', cursive;
-            letter-spacing: 1px;
-            position: relative;
-            padding: 0 30px;
-        }
-        
-        .subtitle::before, .subtitle::after {
-            content: '❦';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ff6b8b;
-            font-size: 1.2rem;
-            opacity: 0.7;
-        }
-        
-        .subtitle::before { left: 5px; }
-        .subtitle::after { right: 5px; }
-        
-        .proposal-card {
-            background: linear-gradient(135deg, 
-                rgba(255, 240, 245, 0.9), 
-                rgba(255, 228, 232, 0.9));
-            border-radius: 18px;
-            padding: 25px 20px;
-            margin: 25px 0;
-            border: 1px solid rgba(255, 182, 193, 0.2);
-            box-shadow: 
-                0 8px 20px rgba(255, 107, 139, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .proposal-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 107, 139, 0.5), 
-                transparent);
-        }
-        
-        .proposal-text {
-            font-size: 1.3rem;
-            color: #8b0000;
+            background: #0c141f;  /* deep professional navy-black */
+            font-family: 'Inter', sans-serif;
+            color: #e1e9f0;
             line-height: 1.5;
-            margin-bottom: 25px;
-            font-weight: 400;
-            font-family: 'Cormorant Garamond', serif;
-            padding: 0 10px;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
         }
-        
-        .name {
-            color: #ff3366;
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            display: inline-block;
-            margin: 0 5px;
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.05);
-            position: relative;
-            padding: 0 3px;
+
+        html {
+            scroll-padding-top: 90px;
         }
-        
-        .name::after {
-            content: '';
-            position: absolute;
-            bottom: 3px;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background: linear-gradient(90deg, transparent, #ff3366, transparent);
-            opacity: 0.5;
+
+        h1, h2, h3, .nav-link, .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
         }
-        
-        .question {
-            font-size: 1.8rem;
-            color: #ff3366;
-            font-weight: 700;
-            margin: 25px 0 35px;
-            font-family: 'Playfair Display', serif;
-            line-height: 1.3;
-            position: relative;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 12px;
-            border: 1px solid rgba(255, 182, 193, 0.3);
-        }
-        
-        .question::before {
-            content: '💍';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.5rem;
-            background: white;
-            padding: 0 8px;
-        }
-        
-        .buttons {
+
+        /* navigation – sophisticated glass */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 25, 40, 0.85);
+            backdrop-filter: blur(16px) saturate(200%);
+            -webkit-backdrop-filter: blur(16px) saturate(200%);
+            border-bottom: 1px solid #2d4b66;
+            padding: 0.9rem 2.5rem;
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2.2rem 3rem;
+            box-shadow: 0 8px 25px -8px #03080e;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #cbdbe9;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link i {
+            font-size: 1rem;
+            color: #7fa5c2;
+        }
+
+        .nav-link:hover {
+            border-bottom-color: #5f9bc0;
+            color: #ffffff;
+        }
+
+        .nav-link:hover i {
+            color: #b0d0e8;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.8rem 2.2rem 3.5rem;
+        }
+
+        /* hero – elegant deep tone */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            background: #162a3b;
+            border-radius: 3rem;
+            padding: 2.8rem 3.2rem;
+            margin: 2.5rem 0 3.8rem;
+            box-shadow: 0 30px 45px -25px #01060a, 0 0 0 1px #2f4d68 inset;
+            border: 1px solid #2b4a63;
+        }
+
+        .hero-avatar {
+            flex: 0 0 170px;
+            height: 170px;
+            background: linear-gradient(145deg, #264a63, #14384f);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #b5d0e4;
+            border: 4px solid #356285;
+            box-shadow: 0 20px 25px -12px #020b12;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            background: linear-gradient(150deg, #d1e2f0, #9ec3e0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-location {
+            font-size: 1.25rem;
+            color: #acc6db;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero-location i {
+            color: #75a5cb;
+        }
+
+        .hero-objective {
+            background: #1c3346;
+            border-radius: 2rem;
+            padding: 1.4rem 2rem;
+            font-size: 1.18rem;
+            border-left: 6px solid #5282a8;
+            box-shadow: inset 0 1px 3px rgba(255,255,255,0.05);
+            color: #d0e2f2;
+        }
+
+        .hero-objective i {
+            margin-right: 12px;
+            color: #8bb9db;
+        }
+
+        /* sections – refined */
+        .section {
+            background: #132433;
+            backdrop-filter: blur(4px);
+            border-radius: 2.5rem;
+            padding: 2.4rem 2.8rem;
+            margin: 3.8rem 0;
+            border: 1px solid #2f4e68;
+            box-shadow: 0 20px 30px -20px #02070c, 0 0 0 1px #1e3b4f inset;
+            scroll-margin-top: 100px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 550;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: #c3dcee;
+            border-bottom: 2px solid #355e7c;
+            padding-bottom: 0.7rem;
+        }
+
+        .section-title i {
+            font-size: 2.1rem;
+            color: #6f9fc9;
+        }
+
+        /* skill chips */
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
+        }
+        .skill-chip {
+            background: #1c364b;
+            padding: 0.7rem 1.7rem;
+            border-radius: 60px;
+            font-weight: 500;
+            color: #d2e3f2;
+            border: 1px solid #3e607d;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .skill-chip i {
+            color: #8bb9db;
+        }
+        .skill-chip:hover {
+            background: #284a65;
+            border-color: #6797bb;
+            color: white;
+        }
+
+        /* experience card */
+        .exp-card {
+            background: #102230;
+            border-radius: 2rem;
+            padding: 2rem 2.3rem;
+            border: 1px solid #2a4b64;
+        }
+        .exp-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 1.4rem;
+        }
+        .exp-role {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #c6deef;
+        }
+        .exp-badge {
+            background: #1d3d56;
+            padding: 0.4rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #bad2e7;
+            border: 1px solid #3d6785;
+        }
+        .exp-desc {
+            list-style: none;
+        }
+        .exp-desc li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            gap: 1.2rem;
+            align-items: flex-start;
+            color: #d1e2f0;
+        }
+        .exp-desc li i {
+            color: #6f9fc9;
+            width: 1.6rem;
+            font-size: 1.2rem;
+        }
+
+        /* projects grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .project-tile {
+            background: #102433;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            border: 1px solid #2f526e;
+        }
+        .project-tile h3 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            color: #c5dff2;
+            margin-bottom: 0.5rem;
+        }
+        .project-stack {
+            color: #93bbd9;
+            font-weight: 500;
+            margin: 0.4rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* education & certificates grid */
+        .edu-cert-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .info-panel {
+            background: #102433;
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            border: 1px solid #305571;
+        }
+        .info-panel h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #c4ddf1;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .cert-list {
+            list-style: none;
+        }
+        .cert-list li {
+            margin-bottom: 1rem;
+            display: flex;
             align-items: center;
             gap: 15px;
-            margin-top: 20px;
-            width: 100%;
+            color: #d0e2f0;
         }
-        
-        .btn {
-            border: none;
-            border-radius: 50px;
-            padding: 16px 30px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 
-                0 6px 15px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            position: relative;
-            width: 100%;
-            max-width: 280px;
-            font-family: 'Poppins', sans-serif;
-            overflow: hidden;
-            touch-action: manipulation;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.7s;
-        }
-        
-        .btn:hover::before {
-            left: 100%;
-        }
-        
-        .btn-yes {
-            background: linear-gradient(135deg, #4CAF50, #2E7D32);
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-        
-        .btn-yes:active {
-            transform: scale(0.98);
-            box-shadow: 
-                0 4px 8px rgba(76, 175, 80, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        }
-        
-        .btn-no {
-            background: linear-gradient(135deg, #f44336, #c62828);
-            color: white;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-            position: relative;
-            transition: all 0.2s ease;
-        }
-        
-        .btn-no:active {
-            transform: scale(0.98);
-        }
-        
-        .message-container {
-            display: none;
-            margin-top: 30px;
-            padding: 25px 20px;
-            background: linear-gradient(135deg, 
-                rgba(255, 240, 245, 0.95), 
-                rgba(255, 228, 232, 0.95));
-            border-radius: 18px;
-            animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(255, 182, 193, 0.3);
-            box-shadow: 
-                0 10px 25px rgba(255, 107, 139, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        @keyframes slideUp {
-            from { 
-                opacity: 0; 
-                transform: translateY(30px) scale(0.95); 
-            }
-            to { 
-                opacity: 1; 
-                transform: translateY(0) scale(1); 
-            }
-        }
-        
-        .message-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                #4CAF50, 
-                #2E7D32, 
-                #4CAF50);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite linear;
-        }
-        
-        .message-title {
-            color: #ff3366;
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-        
-        .message-text {
+        .cert-list i {
+            color: #6f9fc9;
+            width: 1.6rem;
             font-size: 1.3rem;
-            color: #8b0000;
-            margin-bottom: 25px;
-            line-height: 1.5;
-            font-weight: 500;
-            padding: 0 10px;
         }
-        
-        .gif-container {
-            max-width: 280px;
-            margin: 0 auto 25px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 
-                0 10px 25px rgba(0, 0, 0, 0.2),
-                0 0 0 2px white,
-                0 0 0 4px rgba(255, 107, 139, 0.1);
-            transition: transform 0.3s ease;
+
+        /* contact panel */
+        .contact-panel {
+            background: linear-gradient(135deg, #1e3d55, #102c40);
+            border-radius: 2.5rem;
+            padding: 2.5rem 2.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            row-gap: 1.5rem;
+            margin-top: 3rem;
+            border: 1px solid #3d6380;
         }
-        
-        .gif-container:active {
-            transform: scale(1.02);
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.15rem;
+            color: #d6e7f5;
         }
-        
-        .gif-container img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .contact-item i {
+            font-size: 1.6rem;
+            width: 2rem;
+            color: #99c2e0;
         }
-        
-        .final-message {
-            margin-top: 20px;
-            padding: 18px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            font-size: 1.3rem;
-            color: #ff3366;
-            font-weight: 600;
-            border: 1px solid rgba(255, 182, 193, 0.3);
-            position: relative;
-            line-height: 1.4;
-        }
-        
-        .final-message::before, .final-message::after {
-            content: '💖';
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.2rem;
-        }
-        
-        .final-message::before { left: 5px; }
-        .final-message::after { right: 5px; }
-        
-        .footer {
-            margin-top: 25px;
-            color: #ff6699;
-            font-size: 1rem;
-            font-family: 'Dancing Script', cursive;
-            letter-spacing: 0.5px;
-            line-height: 1.4;
-        }
-        
-        .floating-hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .floating-heart {
-            position: absolute;
-            font-size: 1.5rem;
+
+        /* scroll animation */
+        .fade-up {
             opacity: 0;
-            animation: floatUp 12s infinite linear;
-            z-index: 1;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.15, 0.9, 0.25, 1), transform 0.8s cubic-bezier(0.15, 0.9, 0.25, 1);
         }
-        
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+        .fade-up.appear {
+            opacity: 1;
+            transform: translateY(0);
         }
-        
-        /* Tablet */
-        @media (min-width: 768px) {
-            .container {
-                max-width: 600px;
-                padding: 40px 35px;
-                border-radius: 25px;
-            }
-            
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1.4rem;
-                margin-bottom: 40px;
-            }
-            
-            .proposal-card {
-                padding: 35px 30px;
-                margin: 35px 0;
-                border-radius: 22px;
-            }
-            
-            .proposal-text {
-                font-size: 1.6rem;
-            }
-            
-            .name {
-                font-size: 3rem;
-            }
-            
-            .question {
-                font-size: 2.2rem;
-                margin: 30px 0 45px;
-                padding: 20px;
-            }
-            
-            .buttons {
-                flex-direction: row;
-                justify-content: center;
-                gap: 25px;
-            }
-            
-            .btn {
-                width: auto;
-                padding: 18px 45px;
-                font-size: 1.7rem;
-            }
-            
-            .message-container {
-                padding: 35px 30px;
-            }
-            
-            .message-title {
-                font-size: 2.5rem;
-            }
-            
-            .message-text {
-                font-size: 1.5rem;
-            }
-            
-            .gif-container {
-                max-width: 320px;
-            }
-            
-            .final-message {
-                font-size: 1.5rem;
-                padding: 20px;
-            }
-            
-            .corner-decoration {
-                width: 60px;
-                height: 60px;
-            }
+
+        @media (max-width: 700px) {
+            .navbar { gap: 1.2rem; padding: 0.8rem 1rem; }
+            .hero { padding: 2rem 1.5rem; }
+            .hero-avatar { flex-basis: 130px; height: 130px; font-size: 3.8rem; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .edu-cert-grid { grid-template-columns: 1fr; }
+            .contact-panel { flex-direction: column; align-items: flex-start; }
+            .section { padding: 1.8rem 1.5rem; }
         }
-        
-        /* Desktop */
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 800px;
-                padding: 50px 45px;
-            }
-            
-            h1 {
-                font-size: 3.2rem;
-            }
-            
-            .proposal-text {
-                font-size: 1.8rem;
-            }
-            
-            .question {
-                font-size: 2.5rem;
-            }
-            
-            .btn {
-                padding: 20px 50px;
-                font-size: 1.8rem;
-            }
-            
-            .buttons {
-                gap: 40px;
-            }
-            
-            .gif-container {
-                max-width: 350px;
-            }
-            
-            .gif-container:hover {
-                transform: scale(1.03);
-            }
-            
-            .btn-yes:hover {
-                transform: translateY(-3px) scale(1.05);
-                box-shadow: 
-                    0 12px 30px rgba(76, 175, 80, 0.3),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-            }
-            
-            .btn-yes:active {
-                transform: translateY(-1px) scale(1.02);
-            }
+
+        .micro-meta {
+            color: #9bbcd6;
+            font-weight: 500;
         }
-        
-        /* Very small phones */
-        @media (max-width: 360px) {
-            .container {
-                padding: 20px 15px;
-            }
-            
-            h1 {
-                font-size: 1.9rem;
-            }
-            
-            .proposal-text {
-                font-size: 1.2rem;
-            }
-            
-            .name {
-                font-size: 2.2rem;
-            }
-            
-            .question {
-                font-size: 1.6rem;
-                padding: 12px;
-            }
-            
-            .btn {
-                padding: 14px 25px;
-                font-size: 1.4rem;
-                max-width: 240px;
-            }
-            
-            .gif-container {
-                max-width: 250px;
-            }
+        hr {
+            border: none;
+            border-top: 2px dashed #2d4d68;
+            margin: 1.5rem 0;
         }
-        
-        /* Landscape mode */
-        @media (max-height: 500px) and (orientation: landscape) {
-            body {
-                padding: 10px;
-                align-items: flex-start;
-            }
-            
-            .container {
-                margin: 10px auto;
-                max-width: 90%;
-            }
-            
-            .proposal-card {
-                padding: 20px;
-                margin: 15px 0;
-            }
-            
-            .buttons {
-                flex-direction: row;
-                gap: 15px;
-            }
-            
-            .btn {
-                padding: 12px 25px;
-                font-size: 1.4rem;
-                max-width: 200px;
-            }
-        }
-        
-        /* Prevent text selection */
-        .no-select {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        
-        /* Better touch targets */
-        button, .btn {
-            min-height: 44px;
-            min-width: 44px;
+        footer {
+            color: #86aecf;
         }
     </style>
 </head>
-<body class="no-select">
-    <div class="bg-hearts" id="bgHearts"></div>
-    
-    <div class="container">
-        <div class="corner-decoration corner-top-left"></div>
-        <div class="corner-decoration corner-top-right"></div>
-        <div class="corner-decoration corner-bottom-left"></div>
-        <div class="corner-decoration corner-bottom-right"></div>
-        
-        <div class="floating-hearts" id="floatingHearts"></div>
-        
-        <div class="content">
-            <h1>My Heart's Forever Question</h1>
-            <p class="subtitle">The most beautiful beginning awaits</p>
-            
-            <div class="proposal-card" id="proposalCard">
-                <div class="proposal-text">
-                    My dearest <span class="name">Shona</span>,<br>
-                    From the moment you entered my life,<br>
-                    every day has been more beautiful than the last.<br>
-                    You are my peace, my joy, my everything.
-                </div>
-                
-                <div class="question">
-                    Will you make me the happiest person<br>
-                    by becoming my wife?
-                </div>
-                
-                <div class="buttons">
-                    <button class="btn btn-yes" id="yesBtn">
-                        Yes! Forever! <i class="fas fa-heart"></i>
-                    </button>
-                    <button class="btn btn-no" id="noBtn">
-                        No <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="message-container" id="messageContainer">
-                <h2 class="message-title">She Said Yes! 💍✨</h2>
-                <p class="message-text">
-                    My heart is overflowing with pure joy!<br>
-                    You've just given me the greatest gift I could ever receive.<br>
-                    I can't wait to build our forever together.
-                </p>
-                
-                <div class="gif-container">
-                    <img src="https://media.giphy.com/media/26tknCqiJrBQG6DrC/giphy.gif" alt="Beautiful Celebration" loading="lazy">
-                </div>
-                
-                <div class="final-message">
-                    Our beautiful journey begins today! Get ready for a lifetime of love and happiness!
-                </div>
-                
-                <p class="footer">
-                    With all my love, now and forever
-                </p>
-            </div>
-            
-            <p class="footer">Proposal Day - The start of our forever story</p>
+<body>
+
+<nav class="navbar">
+    <a href="#hero" class="nav-link"><i class="fas fa-home"></i> Home</a>
+    <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a>
+    <a href="#projects" class="nav-link"><i class="fas fa-code"></i> Projects</a>
+    <a href="#skills" class="nav-link"><i class="fas fa-cogs"></i> Skills</a>
+    <a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a>
+    <a href="#certificates" class="nav-link"><i class="fas fa-certificate"></i> Certificates</a>
+    <a href="#contact" class="nav-link"><i class="fas fa-address-card"></i> Contact</a>
+</nav>
+
+<main class="container">
+
+    <!-- hero section -->
+    <section id="hero" class="hero fade-up">
+        <div class="hero-avatar">
+            <i class="fas fa-user-tie"></i>
         </div>
+        <div class="hero-content">
+            <h1>Palaki Narayan</h1>
+            <div class="hero-location">
+                <i class="fas fa-map-marker-alt"></i> Berhampur, India · +91 96680 79376
+                <span style="margin-left: 1rem;"><i class="fas fa-envelope"></i> palakinarayan1234@gmail.com</span>
+            </div>
+            <div class="hero-objective">
+                <i class="fas fa-bullseye"></i> Full‑Stack Developer with 1 year of professional experience building scalable backend systems (Python/Django) and cybersecurity platforms — SIEM, log ingestion pipelines, rule engines & real‑time dashboards.
+            </div>
+        </div>
+    </section>
+
+    <!-- experience -->
+    <section id="experience" class="section fade-up">
+        <div class="section-title"><i class="fas fa-briefcase"></i> Experience</div>
+        <div class="exp-card">
+            <div class="exp-header">
+                <span class="exp-role">Full-Stack Developer</span>
+                <span class="exp-badge">Cyberbrains Pvt Ltd · Mar 2024 – Present</span>
+            </div>
+            <ul class="exp-desc">
+                <li><i class="fas fa-shield-halved"></i> Developed & maintained cybersecurity monitoring platform (SIEM & ITSM) using Django.</li>
+                <li><i class="fas fa-code-branch"></i> Designed backend REST APIs for rule configuration, alerts, incident workflows & dynamic rule engine.</li>
+                <li><i class="fas fa-gears"></i> Built log ingestion & parsing system (Windows Event logs, key‑value) + Elasticsearch indexing.</li>
+                <li><i class="fas fa-chart-pie"></i> Real‑time dashboards, time‑series event analysis; responsive UI with JS, Bootstrap, Tailwind.</li>
+                <li><i class="fas fa-lock"></i> Implemented role‑based authentication and secure access control.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- projects (original two projects only) -->
+    <section id="projects" class="section fade-up">
+        <div class="section-title"><i class="fas fa-laptop-code"></i> Projects</div>
+        <div class="projects-grid">
+            <div class="project-tile">
+                <h3>TALKWEB</h3>
+                <p class="project-stack"><i class="fas fa-stack"></i> HTML, CSS, JS, Python, SQLite</p>
+                <p>Voice assistant with speech recognition. Python automation scripts for system tasks, frontend voice capture.</p>
+            </div>
+            <div class="project-tile">
+                <h3>Chat Boot</h3>
+                <p class="project-stack"><i class="fas fa-stack"></i> Django, Bootstrap, SQLite</p>
+                <p>Real‑time messaging with AJAX, authentication, session management, responsive chat UI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- skills -->
+    <section id="skills" class="section fade-up">
+        <div class="section-title"><i class="fas fa-wrench"></i> Technical Skills</div>
+        <div class="skill-cloud">
+            <span class="skill-chip"><i class="fab fa-python"></i> Python/Django</span>
+            <span class="skill-chip"><i class="fas fa-code"></i> DRF, Celery</span>
+            <span class="skill-chip"><i class="fas fa-database"></i> PostgreSQL, MySQL, SQLite, Oracle SQL</span>
+            <span class="skill-chip"><i class="fas fa-search"></i> Elasticsearch</span>
+            <span class="skill-chip"><i class="fab fa-js"></i> JavaScript, jQuery</span>
+            <span class="skill-chip"><i class="fab fa-css3-alt"></i> Tailwind, Bootstrap, CSS</span>
+            <span class="skill-chip"><i class="fab fa-git-alt"></i> Git, GitHub, Docker, Linux</span>
+            <span class="skill-chip"><i class="fas fa-tools"></i> VS Code, Postman</span>
+            <span class="skill-chip"><i class="fas fa-cloud"></i> HTML5</span>
+        </div>
+    </section>
+
+    <!-- education & certificates -->
+    <div class="edu-cert-grid">
+        <section id="education" class="section fade-up" style="margin: 0;">
+            <div class="section-title" style="font-size: 1.9rem;"><i class="fas fa-graduation-cap"></i> Education</div>
+            <div class="info-panel" style="padding: 1.8rem;">
+                <h3><i class="fas fa-university"></i> Bachelor of Science (CS) </h3>
+                <p style="font-size: 1.2rem; margin: 1rem 0; color:#b7d3ea;">Berhampur University · expected 2025</p>
+                <p class="micro-meta"><i class="fas fa-check-circle"></i> Core: Data structures, Cybersecurity, Web frameworks</p>
+                <p class="micro-meta"><i class="fas fa-check-circle"></i> Relevant course: DBMS, OS, Python</p>
+            </div>
+        </section>
+
+        <section id="certificates" class="section fade-up" style="margin: 0;">
+            <div class="section-title" style="font-size: 1.9rem;"><i class="fas fa-certificate"></i> Certificates</div>
+            <div class="info-panel" style="padding: 1.8rem;">
+                <ul class="cert-list">
+                    <li><i class="fas fa-seal"></i> <strong>Elasticsearch Engineer</strong> – Elastic (in progress)</li>
+                    <li><i class="fas fa-seal"></i> <strong>Django Security & SIEM fundamentals</strong> – internal Cyberbrains</li>
+                    <li><i class="fas fa-seal"></i> <strong>Python for Cybersecurity</strong> – Infosec Learn</li>
+                    <li><i class="fas fa-seal"></i> <strong>Frontend Masters: Bootstrap & Tailwind</strong> (2024)</li>
+                </ul>
+            </div>
+        </section>
     </div>
 
-    <script>
-        // Mobile touch optimization
-        let touchStartX = 0;
-        let touchStartY = 0;
-        
-        // Create background hearts
-        const bgHearts = document.getElementById('bgHearts');
-        for (let i = 0; i < 5; i++) {
-            const heart = document.createElement('div');
-            heart.classList.add('bg-heart');
-            heart.innerHTML = '❤';
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.top = `${Math.random() * 100}%`;
-            heart.style.fontSize = `${Math.random() * 2 + 2}rem`;
-            heart.style.animationDuration = `${Math.random() * 10 + 20}s`;
-            heart.style.animationDelay = `${Math.random() * 5}s`;
-            bgHearts.appendChild(heart);
-        }
-        
-        // Create floating hearts
-        const floatingHearts = document.getElementById('floatingHearts');
-        function createFloatingHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            const hearts = ['❤️', '💖', '💗', '💓', '💞'];
-            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.fontSize = `${Math.random() * 1 + 1.2}rem`;
-            heart.style.animationDuration = `${Math.random() * 6 + 6}s`;
-            heart.style.animationDelay = `${Math.random() * 2}s`;
-            heart.style.color = `hsl(${Math.random() * 20 + 340}, 100%, 65%)`;
-            floatingHearts.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 13000);
-        }
-        
-        // Initial floating hearts
-        for (let i = 0; i < 10; i++) {
-            setTimeout(() => createFloatingHeart(), i * 400);
-        }
-        
-        // Continuous floating hearts
-        setInterval(() => {
-            createFloatingHeart();
-        }, 2000);
-        
-        // Get DOM elements
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const messageContainer = document.getElementById('messageContainer');
-        const proposalCard = document.getElementById('proposalCard');
-        const container = document.querySelector('.container');
-        
-        // Counter for how many times "No" was tried
-        let noAttempts = 0;
-        const noButtonTexts = [
-            "No", "Are you sure?", "Really sure?", 
-            "Think about it", "Give me time", 
-            "I'm nervous", "This is big", 
-            "Okay... maybe", "Yes! I will!"
-        ];
-        
-        // Function to move the "No" button - optimized for mobile
-        function moveNoButton(event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            
-            noAttempts++;
-            
-            // Change button text
-            if (noAttempts <= noButtonTexts.length) {
-                const icon = noAttempts < noButtonTexts.length - 1 ? 'fa-times' : 'fa-heart';
-                noBtn.innerHTML = `${noButtonTexts[noAttempts-1]} <i class="fas ${icon}"></i>`;
-            }
-            
-            // After too many attempts, turn it into a "yes" button
-            if (noAttempts >= noButtonTexts.length) {
-                noBtn.innerHTML = `Yes! I Will! <i class="fas fa-heart"></i>`;
-                noBtn.style.background = "linear-gradient(135deg, #4CAF50, #2E7D32)";
-                noBtn.onclick = triggerYes;
-                noBtn.ontouchstart = triggerYes;
-                noBtn.onmouseover = null;
-                noBtn.ontouchstart = null;
-                noBtn.style.cursor = "pointer";
-                return;
-            }
-            
-            // Get container dimensions
-            const containerRect = container.getBoundingClientRect();
-            const buttonRect = noBtn.getBoundingClientRect();
-            
-            // Calculate safe position (leaving padding)
-            const padding = 10;
-            const maxX = containerRect.width - buttonRect.width - padding * 2;
-            const maxY = containerRect.height - buttonRect.height - padding * 2;
-            
-            // Ensure we don't get negative values on very small screens
-            const safeMaxX = Math.max(0, maxX);
-            const safeMaxY = Math.max(0, maxY);
-            
-            const randomX = Math.floor(Math.random() * safeMaxX) + padding;
-            const randomY = Math.floor(Math.random() * safeMaxY) + padding;
-            
-            // Move button with smooth transition
-            noBtn.style.transition = "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = `${randomX}px`;
-            noBtn.style.top = `${randomY}px`;
-            
-            // Add gentle shake effect
-            noBtn.style.animation = 'none';
-            setTimeout(() => {
-                noBtn.style.animation = 'gentleShake 0.6s';
-            }, 10);
-            
-            // Create floating heart effect
-            createButtonHeart();
-        }
-        
-        // Add shake animation for mobile
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @keyframes gentleShake {
-                0% { transform: translateX(0) rotate(0deg); }
-                25% { transform: translateX(-4px) rotate(-2deg); }
-                50% { transform: translateX(4px) rotate(2deg); }
-                75% { transform: translateX(-4px) rotate(-2deg); }
-                100% { transform: translateX(0) rotate(0deg); }
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Create heart effect when button is moved
-        function createButtonHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            heart.innerHTML = '💔';
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.fontSize = '1.2rem';
-            heart.style.animationDuration = '2s';
-            heart.style.color = '#999';
-            floatingHearts.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 2000);
-        }
-        
-        // Beautiful celebration function - optimized for mobile
-        function triggerYes(event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            
-            // Show the celebration message
-            messageContainer.style.display = 'block';
-            
-            // Hide the proposal card with animation
-            proposalCard.style.opacity = '0';
-            proposalCard.style.transform = 'translateY(-20px) scale(0.95)';
-            proposalCard.style.transition = 'all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            
-            setTimeout(() => {
-                proposalCard.style.display = 'none';
-            }, 600);
-            
-            // Add celebration hearts
-            for (let i = 0; i < 15; i++) {
-                setTimeout(() => {
-                    createCelebrationHeart();
-                }, i * 100);
-            }
-            
-            // Update message with beautiful text
-            const messageText = document.querySelector('.message-text');
-            messageText.innerHTML = `
-                My heart is overflowing with pure joy!<br>
-                You've just given me the greatest gift I could ever receive.<br>
-                I can't wait to build our forever together.<br><br>
-                <span style="color:#ff3366; font-family:'Dancing Script', cursive; font-size:1.4rem;">
-                This day will forever be etched in my heart as the most beautiful beginning.
-                </span>
-            `;
-            
-            // Play vibration on mobile if supported
-            if (navigator.vibrate) {
-                navigator.vibrate([100, 50, 100, 50, 100]);
-            }
-            
-            // Add final beautiful effects
-            setTimeout(() => {
-                const finalMessage = document.querySelector('.final-message');
-                finalMessage.innerHTML = `
-                    <i class="fas fa-ring" style="margin-right:8px;"></i>
-                    Our beautiful journey begins today! Get ready for a lifetime of love and happiness!
-                    <i class="fas fa-heart" style="margin-left:8px;"></i>
-                `;
-                
-                // Add more celebration hearts
-                for (let i = 0; i < 10; i++) {
-                    createCelebrationHeart();
+    <!-- contact -->
+    <section id="contact" class="fade-up" style="margin-top: 3.2rem;">
+        <div class="contact-panel">
+            <div class="contact-item"><i class="fas fa-phone-alt"></i> +91 96680 79376</div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> palakinarayan1234@gmail.com</div>
+            <div class="contact-item"><i class="fab fa-linkedin"></i> linkedin.com/in/palaki-narayan</div>
+            <div class="contact-item"><i class="fab fa-github"></i> github.com/palaki-dev</div>
+        </div>
+        <div style="display: flex; gap: 2.5rem; justify-content: center; margin: 2rem 0 0.5rem; flex-wrap: wrap;">
+            <span><i class="fas fa-map-marker-alt" style="color:#7da9cc;"></i> Berhampur, India</span>
+            <span><i class="fas fa-globe" style="color:#7da9cc;"></i> English, Hindi, Odia</span>
+        </div>
+    </section>
+
+    <hr>
+    <footer style="text-align: center; font-weight: 400;">
+        <i class="fas fa-code"></i> palaki narayan · full‑stack developer
+    </footer>
+</main>
+
+<!-- scroll animation -->
+<script>
+    (function() {
+        const elements = document.querySelectorAll('.fade-up');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('appear');
+                    observer.unobserve(entry.target);
                 }
-            }, 800);
-        }
-        
-        // Create celebration heart
-        function createCelebrationHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            const hearts = ['❤️', '💖', '💗', '💓', '💞', '✨', '🌟'];
-            heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
-            heart.style.left = `${Math.random() * 100}%`;
-            heart.style.fontSize = `${Math.random() * 1.5 + 1.5}rem`;
-            heart.style.animationDuration = `${Math.random() * 3 + 3}s`;
-            
-            const colors = ['#ff3366', '#ff6699', '#ff1493', '#ff6b8b', '#ffd700'];
-            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-            
-            floatingHearts.appendChild(heart);
-            
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }
-        
-        // Add event listeners optimized for mobile
-        noBtn.addEventListener('touchstart', function(event) {
-            touchStartX = event.touches[0].clientX;
-            touchStartY = event.touches[0].clientY;
-            moveNoButton(event);
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -20px 0px' });
+
+        elements.forEach(el => observer.observe(el));
+
+        window.addEventListener('load', () => {
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('appear');
+                    observer.unobserve(el);
+                }
+            });
         });
-        
-        noBtn.addEventListener('mouseover', moveNoButton);
-        
-        noBtn.addEventListener('click', function(event) {
-            event.preventDefault();
-            moveNoButton(event);
-        });
-        
-        // Yes button functionality
-        yesBtn.addEventListener('click', triggerYes);
-        yesBtn.addEventListener('touchstart', function(event) {
-            event.preventDefault();
-            triggerYes(event);
-        });
-        
-        // Initial floating hearts with delay
-        for (let i = 0; i < 6; i++) {
-            setTimeout(() => createFloatingHeart(), i * 600);
-        }
-        
-        // Prevent zoom on double tap
-        document.addEventListener('touchstart', function(event) {
-            if (event.touches.length > 1) {
-                event.preventDefault();
-            }
-        }, { passive: false });
-        
-        // Prevent context menu on long press
-        document.addEventListener('contextmenu', function(event) {
-            event.preventDefault();
-            return false;
-        });
-    </script>
+    })();
+</script>
+
 </body>
 </html>
